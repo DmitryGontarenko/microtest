@@ -1,12 +1,21 @@
 pipeline {
    agent any
-
+    options {
+        timestamps()
+    }
     stages {
-        stage('Build') {
+        stage('Run Project') {
             steps {
-                echo 'Building...'
-                sh './gradlew build'
+                echo 'Running...'
+                sh './gradlew run'
                 echo 'Build has been completed '
+            }
+        }
+        stage('Test Project') {
+            steps {
+                echo 'Testing...'
+                sh './gradlew test'
+                echo 'Tests has been completed '
             }
         }
     }
